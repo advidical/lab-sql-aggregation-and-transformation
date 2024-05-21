@@ -86,14 +86,10 @@ GROUP BY rating
 ORDER BY Average_Duration DESC;
 
 -- 2.2 Identify which ratings have a mean duration of over two hours in order to help select films for customers who prefer longer movies.
-SELECT 
-    rating,
-    CASE
-        WHEN AVG(length) > 120 THEN 'Above 2 Hours'
-        ELSE 'Below or Equal to 2 Hours'
-    END AS 'Average Duration'
+SELECT rating
 FROM film
-GROUP BY rating;
+GROUP BY rating
+Having AVG(length) > 120;
 
 -- Bonus: determine which last names are not repeated in the table actor. 
 SELECT 
