@@ -92,11 +92,7 @@ GROUP BY rating
 Having AVG(length) > 120;
 
 -- Bonus: determine which last names are not repeated in the table actor. 
-SELECT 
-	DISTINCT last_name,
-	CASE
-		When count(last_name) > 1 THEN "Repeated Last Name"
-		Else "Unique Last Name"
-	END AS 'UNIQUE?'
+SELECT last_name
 from actor
-GROUP BY last_name;
+GROUP BY last_name
+HAVING COUNT(last_name) = 1;
